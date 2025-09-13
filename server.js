@@ -1,6 +1,7 @@
 // AagniChain Backend Server (Refactored)
 
 // 1. Import necessary tools
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const { Resend } = require('resend');
@@ -105,3 +106,4 @@ app.listen(PORT, () => {
     console.log(`✅ AagniChain backend server is running on http://localhost:${PORT}`);
     console.log('Waiting for registration requests...');
 });
+
