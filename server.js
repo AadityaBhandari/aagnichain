@@ -13,7 +13,7 @@ app.use(express.json()); // Allows the server to understand JSON
 
 // 3. Configure the Email Service (Resend)
 // API Key is correctly placed here from the user's request.
-const resend = new Resend('re_491x8Pcv_XnT5NNcgwmggJEUjp8fXkJKs'); 
+const resend = new Resend('process.env.RESEND_API_KEY'); 
 
 const PORT = 3000;
 
@@ -100,4 +100,5 @@ app.post('/register-business', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`✅ AagniChain backend server is running on http://localhost:${PORT}`);
     console.log('Waiting for registration requests...');
+
 });
