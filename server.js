@@ -51,22 +51,6 @@ const sendEmail = async ({ to, subject, html }) => {
     }
 };
 
-app.post('/register-farmer', async (req, res) => {
-  const { email } = req.body;
-  if (!email) return res.status(400).json({ error: 'Email is required' });
-
-  // 1. Confirmation email to the farmer
-  await sendEmail({ to: email, subject: '...', html: '...' });
-
-  // 2. Notification email to YOU ← add this
-  await sendEmail({
-    to: 'bhandariaditya639@gmail.com',
-    subject: '🌾 New Farmer Registration!',
-    html: `<p>A new farmer just registered: <strong>${email}</strong></p>`
-  });
-
-  res.status(200).json({ success: true, message: 'Confirmation email sent successfully!' });
-});
 
 // 6. Farmer Registration Endpoint
 app.post('/register-farmer', async (req, res) => {
@@ -88,6 +72,21 @@ app.post('/register-farmer', async (req, res) => {
 
     const { data, error } = await sendEmail({ to: email, subject, html });
     if (error) return res.status(400).json({ error: error.message || String(error) });
+
+    // Notify yourself
+    await sendEmail({
+        to: 'bhandariaditya639@gmail.com',
+        subject: '🌾 New Farmer Registration on AagniChain!',
+        html: `
+            <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+                <h2>New Farmer Registered!</h2>
+                <p>A farmer just signed up on AagniChain.</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Time:</strong> ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
+            </div>
+        `
+    });
+
     res.status(200).json({ success: true, message: 'Confirmation email sent successfully!' });
 });
 
@@ -111,6 +110,21 @@ app.post('/register-business', async (req, res) => {
 
     const { data, error } = await sendEmail({ to: email, subject, html });
     if (error) return res.status(400).json({ error: error.message || String(error) });
+
+    // Notify yourself
+    await sendEmail({
+        to: 'bhandariaditya639@gmail.com',
+        subject: '🏭 New Business Registration on AagniChain!',
+        html: `
+            <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+                <h2>New Business Registered!</h2>
+                <p>A business just signed up on AagniChain.</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Time:</strong> ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
+            </div>
+        `
+    });
+
     res.status(200).json({ success: true, message: 'Inquiry confirmation sent successfully!' });
 });
 
