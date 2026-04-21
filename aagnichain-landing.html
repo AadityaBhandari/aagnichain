@@ -368,12 +368,24 @@ function setupForm(formId,endpoint,btnId,msgId,btnLabel){
         body:JSON.stringify({email})
       });
       const data=await res.json();
-      if(res.ok&&data.success){
-        msg.className='form-msg success';
-        msg.textContent='✓ '+data.message;
-        input.value='';
-        btn.textContent='Registered!';
-      }else{throw new Error(data.error||'Something went wrong.')}
+      if (res.ok && data.success) {
+  msg.className = 'form-msg success';
+  msg.textContent = '✓ ' + data.message;
+  input.value = '';
+  btn.textContent = 'Registered!';
+
+  // Auto-hide after 10 seconds
+  setTimeout(() => {
+    msg.style.transition = 'opacity 0.5s ease';
+    msg.style.opacity = '0';
+    setTimeout(() => {
+      msg.className = 'form-msg';
+      msg.textContent = '';
+      msg.style.opacity = '1';
+      btn.textContent = btnLabel;
+    }, 500);
+  }, 10000);
+}else{throw new Error(data.error||'Something went wrong.')}
     }catch(err){
       msg.className='form-msg error';
       msg.textContent=err.message||'Could not connect. Please try again.';
