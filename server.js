@@ -51,6 +51,23 @@ const sendEmail = async ({ to, subject, html }) => {
     }
 };
 
+app.post('/register-farmer', async (req, res) => {
+  const { email } = req.body;
+  if (!email) return res.status(400).json({ error: 'Email is required' });
+
+  // 1. Confirmation email to the farmer
+  await sendEmail({ to: email, subject: '...', html: '...' });
+
+  // 2. Notification email to YOU ← add this
+  await sendEmail({
+    to: 'bhandariaditya639@gmail.com',
+    subject: '🌾 New Farmer Registration!',
+    html: `<p>A new farmer just registered: <strong>${email}</strong></p>`
+  });
+
+  res.status(200).json({ success: true, message: 'Confirmation email sent successfully!' });
+});
+
 // 6. Farmer Registration Endpoint
 app.post('/register-farmer', async (req, res) => {
     const { email } = req.body;
