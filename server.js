@@ -20,8 +20,11 @@ const SENDER_EMAIL = process.env.SENDER_EMAIL;
 const REPLY_TO_EMAIL = process.env.REPLY_TO_EMAIL;
 
 // 4. Health check route (fixes "Cannot GET /")
+const path = require('path');
+
+// Add this route BEFORE your other routes
 app.get('/', (req, res) => {
-    res.json({ status: 'AagniChain API is running!' });
+  res.sendFile(path.join(__dirname, 'aagnichain-landing.html'));
 });
 
 // 5. Reusable Email Sending Function
