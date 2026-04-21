@@ -70,7 +70,7 @@ app.post('/register-farmer', async (req, res) => {
     `;
 
     const { data, error } = await sendEmail({ to: email, subject, html });
-    if (error) return res.status(400).json({ error });
+    if (error) return res.status(400).json({ error: error.message || String(error) });
     res.status(200).json({ success: true, message: 'Confirmation email sent successfully!' });
 });
 
@@ -93,7 +93,7 @@ app.post('/register-business', async (req, res) => {
     `;
 
     const { data, error } = await sendEmail({ to: email, subject, html });
-    if (error) return res.status(400).json({ error });
+    if (error) return res.status(400).json({ error: error.message || String(error) });
     res.status(200).json({ success: true, message: 'Inquiry confirmation sent successfully!' });
 });
 
