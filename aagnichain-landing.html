@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AagniChain — Turn Parali Into Prosperity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300..700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+  --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+  --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+  --text-3xl: clamp(2.5rem, 1rem + 4vw, 5rem);
+  --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;
+  --space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;
+  --space-20:5rem;--space-24:6rem;
+  --radius-sm:.375rem;--radius-md:.5rem;--radius-lg:.75rem;--radius-xl:1rem;--radius-full:9999px;
+  --transition:180ms cubic-bezier(0.16,1,0.3,1);
+  --content-default:960px;--content-wide:1200px;
+  --font-display:'Instrument Serif',Georgia,serif;
+  --font-body:'Work Sans','Helvetica Neue',sans-serif;
+}
+:root,[data-theme="light"]{
+  --color-bg:#faf7f2;--color-surface:#f5f1e8;--color-surface-2:#ede8db;
+  --color-surface-offset:#e4dece;--color-divider:#d5cebe;--color-border:#c8c0ae;
+  --color-text:#1e1a10;--color-text-muted:#6b6455;--color-text-faint:#a89e8e;
+  --color-text-inverse:#faf7f2;--color-primary:#c85a00;--color-primary-hover:#a84800;
+  --color-primary-active:#883800;--color-primary-highlight:#f0d5be;
+  --color-success:#3d7a1a;--color-error:#b02020;
+  --shadow-sm:0 1px 2px oklch(0.2 0.02 60/0.07);
+  --shadow-md:0 4px 12px oklch(0.2 0.02 60/0.1);
+  --shadow-lg:0 12px 32px oklch(0.2 0.02 60/0.14);
+}
+[data-theme="dark"]{
+  --color-bg:#13110d;--color-surface:#1a1710;--color-surface-2:#201d15;
+  --color-surface-offset:#17140e;--color-divider:#2a2620;--color-border:#3a352b;
+  --color-text:#e8e2d6;--color-text-muted:#8a8070;--color-text-faint:#5a5448;
+  --color-text-inverse:#13110d;--color-primary:#e87830;--color-primary-hover:#f08840;
+  --color-primary-active:#f09050;--color-primary-highlight:#3a2810;
+  --color-success:#6aaa3a;--color-error:#e05050;
+  --shadow-sm:0 1px 2px oklch(0 0 0/0.25);
+  --shadow-md:0 4px 12px oklch(0 0 0/0.35);
+  --shadow-lg:0 12px 32px oklch(0 0 0/0.45);
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme]){
+  --color-bg:#13110d;--color-surface:#1a1710;--color-surface-2:#201d15;
+  --color-surface-offset:#17140e;--color-divider:#2a2620;--color-border:#3a352b;
+  --color-text:#e8e2d6;--color-text-muted:#8a8070;--color-text-faint:#5a5448;
+  --color-text-inverse:#13110d;--color-primary:#e87830;--color-primary-hover:#f08840;
+  --color-primary-active:#f09050;--color-primary-highlight:#3a2810;
+  --color-success:#6aaa3a;--color-error:#e05050;
+  --shadow-sm:0 1px 2px oklch(0 0 0/0.25);
+  --shadow-md:0 4px 12px oklch(0 0 0/0.35);
+  --shadow-lg:0 12px 32px oklch(0 0 0/0.45);
+}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth;scroll-padding-top:var(--space-16)}
+body{min-height:100dvh;line-height:1.6;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg)}
+img,svg{display:block;max-width:100%;height:auto}
+h1,h2,h3,h4{text-wrap:balance;line-height:1.15;font-family:var(--font-display)}
+p,li{text-wrap:pretty}
+input,button,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:none}
+a,button,input{transition:color var(--transition),background var(--transition),border-color var(--transition),box-shadow var(--transition),opacity var(--transition)}
+:focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.container{max-width:var(--content-default);margin-inline:auto;padding-inline:var(--space-6)}
+.container--wide{max-width:var(--content-wide);margin-inline:auto;padding-inline:var(--space-6)}
+nav{position:sticky;top:0;z-index:100;background:color-mix(in oklch,var(--color-bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid oklch(from var(--color-text) l c h/0.08)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding-block:var(--space-4)}
+.nav-logo{display:flex;align-items:center;gap:var(--space-2);text-decoration:none;color:var(--color-text)}
+.nav-logo-text{font-family:var(--font-display);font-size:var(--text-lg);font-weight:400}
+.nav-actions{display:flex;align-items:center;gap:var(--space-3)}
+.btn-theme{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-full);color:var(--color-text-muted);border:1px solid oklch(from var(--color-text) l c h/0.1)}
+.btn-theme:hover{background:var(--color-surface);color:var(--color-text)}
+.btn-nav{font-size:var(--text-sm);font-weight:500;color:var(--color-text-muted);text-decoration:none;padding:var(--space-2) var(--space-4);border-radius:var(--radius-full)}
+.btn-nav:hover{color:var(--color-text);background:var(--color-surface)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);font-size:var(--text-sm);font-weight:600;padding:var(--space-3) var(--space-6);border-radius:var(--radius-full);text-decoration:none;border:none;cursor:pointer}
+.btn-primary{background:var(--color-primary);color:var(--color-text-inverse)}
+.btn-primary:hover{background:var(--color-primary-hover)}
+.btn-primary:active{background:var(--color-primary-active)}
+.btn-outline{background:transparent;color:var(--color-text);border:1px solid oklch(from var(--color-text) l c h/0.2)}
+.btn-outline:hover{background:var(--color-surface);border-color:oklch(from var(--color-text) l c h/0.3)}
+.btn-lg{padding:var(--space-4) var(--space-8);font-size:var(--text-base)}
+.hero{padding-block:clamp(var(--space-16),10vw,var(--space-24)) clamp(var(--space-12),8vw,var(--space-20));overflow:hidden}
+.hero-inner{display:grid;grid-template-columns:1fr;gap:var(--space-12)}
+@media(min-width:768px){.hero-inner{grid-template-columns:1fr 1fr;align-items:center;gap:var(--space-16)}}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--color-primary);background:var(--color-primary-highlight);padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);margin-bottom:var(--space-5)}
+.hero-title{font-size:var(--text-3xl);font-weight:400;color:var(--color-text);margin-bottom:var(--space-6);line-height:1.1}
+.hero-title em{font-style:italic;color:var(--color-primary)}
+.hero-desc{font-size:var(--text-base);color:var(--color-text-muted);max-width:52ch;margin-bottom:var(--space-8);line-height:1.7}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:var(--space-3)}
+.hero-card-stack{display:grid;gap:var(--space-4)}
+.stat-card{background:var(--color-surface);border:1px solid oklch(from var(--color-text) l c h/0.08);border-radius:var(--radius-xl);padding:var(--space-6);box-shadow:var(--shadow-md)}
+.stat-card-label{font-size:var(--text-xs);color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-2)}
+.stat-card-value{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text)}
+.stat-card-sub{font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-1)}
+.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)}
+.section{padding-block:clamp(var(--space-12),8vw,var(--space-20))}
+.section-label{font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--color-primary);margin-bottom:var(--space-4)}
+.section-title{font-size:var(--text-2xl);font-weight:400;margin-bottom:var(--space-6)}
+.section-title em{font-style:italic}
+.section-desc{font-size:var(--text-base);color:var(--color-text-muted);max-width:60ch;line-height:1.7}
+.problem-grid{display:grid;gap:var(--space-6);margin-top:var(--space-12)}
+@media(min-width:640px){.problem-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:960px){.problem-grid{grid-template-columns:repeat(3,1fr)}}
+.problem-card{padding:var(--space-6);background:var(--color-surface);border-radius:var(--radius-xl);border:1px solid oklch(from var(--color-text) l c h/0.07)}
+.problem-card-icon{font-size:1.75rem;margin-bottom:var(--space-4)}
+.problem-card h3{font-family:var(--font-body);font-size:var(--text-base);font-weight:600;margin-bottom:var(--space-2)}
+.problem-card p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6}
+.how-bg{background:var(--color-surface)}
+.steps{display:grid;gap:var(--space-8);margin-top:var(--space-12)}
+@media(min-width:768px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step-num{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-primary);opacity:.4;margin-bottom:var(--space-3);line-height:1}
+.step h3{font-family:var(--font-body);font-size:var(--text-base);font-weight:600;margin-bottom:var(--space-2)}
+.step p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6}
+.register-grid{display:grid;gap:var(--space-8);margin-top:var(--space-12)}
+@media(min-width:768px){.register-grid{grid-template-columns:1fr 1fr}}
+.register-card{background:var(--color-surface);border:1px solid oklch(from var(--color-text) l c h/0.08);border-radius:var(--radius-xl);padding:var(--space-8);box-shadow:var(--shadow-sm)}
+.register-card-tag{display:inline-flex;font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--color-primary);background:var(--color-primary-highlight);padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);margin-bottom:var(--space-4)}
+.register-card h3{font-family:var(--font-display);font-size:var(--text-xl);font-weight:400;margin-bottom:var(--space-3)}
+.register-card p{font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-6);line-height:1.6}
+.form-group{margin-bottom:var(--space-4)}
+.form-group label{display:block;font-size:var(--text-sm);font-weight:500;margin-bottom:var(--space-2);color:var(--color-text)}
+.form-input{width:100%;padding:var(--space-3) var(--space-4);font-size:var(--text-sm);background:var(--color-bg);border:1px solid oklch(from var(--color-text) l c h/0.15);border-radius:var(--radius-md);color:var(--color-text);outline:none}
+.form-input:focus{border-color:var(--color-primary);box-shadow:0 0 0 3px oklch(from var(--color-primary) l c h/0.15)}
+.form-input::placeholder{color:var(--color-text-faint)}
+.form-msg{margin-top:var(--space-3);font-size:var(--text-sm);padding:var(--space-2) var(--space-3);border-radius:var(--radius-md);display:none}
+.form-msg.success{display:block;color:var(--color-success);background:color-mix(in oklch,var(--color-success) 10%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-success) 25%,var(--color-surface))}
+.form-msg.error{display:block;color:var(--color-error);background:color-mix(in oklch,var(--color-error) 10%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-error) 25%,var(--color-surface))}
+.btn-full{width:100%}
+.btn-loading{opacity:.7;pointer-events:none}
+.impact-inner{display:grid;gap:var(--space-6);margin-top:var(--space-12)}
+@media(min-width:640px){.impact-inner{grid-template-columns:1fr 1fr}}
+@media(min-width:960px){.impact-inner{grid-template-columns:repeat(4,1fr)}}
+.impact-item{padding:var(--space-6);background:var(--color-surface);border-radius:var(--radius-xl);border:1px solid oklch(from var(--color-text) l c h/0.07)}
+.impact-num{font-family:var(--font-display);font-size:var(--text-2xl);color:var(--color-primary);line-height:1;margin-bottom:var(--space-2)}
+.impact-label{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.4}
+footer{border-top:1px solid oklch(from var(--color-text) l c h/0.08);padding-block:var(--space-12)}
+.footer-inner{display:flex;flex-direction:column;gap:var(--space-6)}
+@media(min-width:640px){.footer-inner{flex-direction:row;align-items:center;justify-content:space-between}}
+.footer-brand{font-family:var(--font-display);font-size:var(--text-lg);color:var(--color-text)}
+.footer-tagline{font-size:var(--text-sm);color:var(--color-text-muted);margin-top:var(--space-1)}
+.footer-copy{font-size:var(--text-xs);color:var(--color-text-faint)}
+hr{border:none;border-top:1px solid var(--color-divider)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .6s cubic-bezier(0.16,1,0.3,1) both}
+.fade-up-2{animation-delay:.1s}.fade-up-3{animation-delay:.2s}.fade-up-4{animation-delay:.3s}
+</style>
+</head>
+<body>
+<a href="#main" class="sr-only">Skip to content</a>
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="AagniChain Home">
+        <svg aria-label="AagniChain logo" width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <path d="M16 3 C10 3 5 8 5 14 C5 18 7 21 10 23 L10 28 L14 28 L14 24 L18 24 L18 28 L22 28 L22 23 C25 21 27 18 27 14 C27 8 22 3 16 3Z" fill="var(--color-primary)" opacity="0.9"/>
+          <path d="M12 14 C12 11 14 9 16 9 C16 12 15 14 13 16 Z" fill="var(--color-text-inverse)" opacity="0.85"/>
+          <path d="M16 9 C18 9 20 11 20 14 C19 13 17 12 16 9Z" fill="var(--color-text-inverse)" opacity="0.6"/>
+        </svg>
+        <span class="nav-logo-text">AagniChain</span>
+      </a>
+      <div class="nav-actions">
+        <a href="#how-it-works" class="btn-nav">How it works</a>
+        <button class="btn-theme" data-theme-toggle aria-label="Toggle theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+        <a href="#register" class="btn btn-primary">Join Early Access</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<main id="main">
+<section class="hero">
+  <div class="container--wide">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow fade-up">
+          <svg width="8" height="8" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="5"/></svg>
+          Now accepting early registrations
+        </div>
+        <h1 class="hero-title fade-up fade-up-2">India's Parali<br>is <em>not</em> waste.<br>It's wealth.</h1>
+        <p class="hero-desc fade-up fade-up-3">AagniChain connects farmers sitting on millions of tonnes of stubble with businesses that need it — converting a national pollution crisis into a sustainable supply chain.</p>
+        <div class="hero-ctas fade-up fade-up-4">
+          <a href="#register" class="btn btn-primary btn-lg">I'm a Farmer</a>
+          <a href="#register" class="btn btn-outline btn-lg">I'm a Business</a>
+        </div>
+      </div>
+      <div class="hero-visual fade-up fade-up-3">
+        <div class="hero-card-stack">
+          <div class="stat-card">
+            <div class="stat-card-label">Parali burned annually</div>
+            <div class="stat-card-value">23 Million Tonnes</div>
+            <div class="stat-card-sub">Punjab & Haryana alone — waiting to be utilised</div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-card">
+              <div class="stat-card-label">AQI Impact</div>
+              <div class="stat-card-value">450+</div>
+              <div class="stat-card-sub">Hazardous smog every harvest season</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-label">Potential value</div>
+              <div class="stat-card-value">₹12,000 Cr</div>
+              <div class="stat-card-sub">Annual market opportunity</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr>
+<section class="section" id="problem">
+  <div class="container">
+    <div class="section-label">The problem</div>
+    <h2 class="section-title">Every October, India<br><em>sets fire</em> to a goldmine</h2>
+    <p class="section-desc">Farmers burn Parali because they have no fast, affordable alternative. It poisons the air, wastes resources, and leaves farmers with nothing. AagniChain changes that.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-card-icon">🌾</div>
+        <h3>No market access for farmers</h3>
+        <p>Farmers lack buyers, logistics, and pricing transparency. Burning is the cheapest exit they know.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-icon">🏭</div>
+        <h3>Businesses lack sustainable feedstock</h3>
+        <p>Paper mills, bioenergy plants, and packaging companies need biomass but can't source it reliably from rural Punjab and Haryana.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-icon">🌧</div>
+        <h3>India pays the health price</h3>
+        <p>Delhi's AQI crosses 450 every November. Millions suffer respiratory illness. The cost is borne by everyone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section how-bg" id="how-it-works">
+  <div class="container">
+    <div class="section-label">How it works</div>
+    <h2 class="section-title">Three steps from<br><em>field to factory</em></h2>
+    <p class="section-desc">AagniChain is a transparent marketplace and logistics layer that makes Parali trade as simple as ordering online.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Farmer registers</h3>
+        <p>A farmer lists available Parali quantity, location, and preferred pickup window. No middlemen, no paperwork maze.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Business discovers & bids</h3>
+        <p>Verified businesses browse available lots, place transparent bids, and agree on fair prices — creating real competition for farmers.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>AagniChain handles logistics</h3>
+        <p>We coordinate collection, baling, transport, and payment — farmers get paid on time, businesses get reliable supply.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="impact">
+  <div class="container">
+    <div class="section-label">The opportunity</div>
+    <h2 class="section-title">Numbers that matter</h2>
+    <div class="impact-inner">
+      <div class="impact-item"><div class="impact-num">23M+</div><div class="impact-label">Tonnes of Parali generated every year</div></div>
+      <div class="impact-item"><div class="impact-num">2 Cr+</div><div class="impact-label">Farming households who can earn more</div></div>
+      <div class="impact-item"><div class="impact-num">40%</div><div class="impact-label">Potential AQI reduction if burning stops</div></div>
+      <div class="impact-item"><div class="impact-num">₹12K Cr</div><div class="impact-label">Estimated annual biomass market value</div></div>
+    </div>
+  </div>
+</section>
+<hr>
+<section class="section" id="register">
+  <div class="container">
+    <div class="section-label">Early access</div>
+    <h2 class="section-title">Be first.<br><em>Shape the chain.</em></h2>
+    <p class="section-desc">Register now to get early access when we launch in your area. Whether you're a farmer or a business, AagniChain is built for you.</p>
+    <div class="register-grid">
+      <div class="register-card">
+        <span class="register-card-tag">For Farmers</span>
+        <h3>Register as a Farmer</h3>
+        <p>Get notified when AagniChain launches near you. Earn more from your Parali — no burning needed.</p>
+        <form id="farmer-form" novalidate>
+          <div class="form-group">
+            <label for="farmer-email">Email address</label>
+            <input type="email" id="farmer-email" class="form-input" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="farmer-btn">Join as Farmer</button>
+          <div class="form-msg" id="farmer-msg"></div>
+        </form>
+      </div>
+      <div class="register-card">
+        <span class="register-card-tag">For Businesses</span>
+        <h3>Register as a Business</h3>
+        <p>Our partnership team will reach out within 48 hours to discuss your ESG and supply chain goals.</p>
+        <form id="business-form" novalidate>
+          <div class="form-group">
+            <label for="business-email">Business email</label>
+            <input type="email" id="business-email" class="form-input" placeholder="contact@company.com" required autocomplete="email">
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="business-btn">Partner with Us</button>
+          <div class="form-msg" id="business-msg"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">AagniChain</div>
+        <div class="footer-tagline">Turning Parali into Prosperity</div>
+      </div>
+      <div class="footer-copy">© 2026 AagniChain. Built for a cleaner India.</div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;
+  let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+  r.setAttribute('data-theme',d);
+  if(t)t.addEventListener('click',()=>{
+    d=d==='dark'?'light':'dark';
+    r.setAttribute('data-theme',d);
+    t.innerHTML=d==='dark'
+      ?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+      :'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  });
+})();
+
+const API_BASE='https://aagnichain.vercel.app';
+
+function validateEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)}
+
+function setupForm(formId,endpoint,btnId,msgId,btnLabel){
+  const form=document.getElementById(formId);
+  const btn=document.getElementById(btnId);
+  const msg=document.getElementById(msgId);
+  const input=form.querySelector('input[type="email"]');
+  form.addEventListener('submit',async(e)=>{
+    e.preventDefault();
+    const email=input.value.trim();
+    if(!validateEmail(email)){
+      msg.className='form-msg error';
+      msg.textContent='Please enter a valid email address.';
+      return;
+    }
+    btn.classList.add('btn-loading');
+    btn.textContent='Sending...';
+    msg.className='form-msg';
+    msg.textContent='';
+    try{
+      const res=await fetch(API_BASE+'/'+endpoint,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({email})
+      });
+      const data=await res.json();
+      if(res.ok&&data.success){
+        msg.className='form-msg success';
+        msg.textContent='✓ '+data.message;
+        input.value='';
+        btn.textContent='Registered!';
+      }else{throw new Error(data.error||'Something went wrong.')}
+    }catch(err){
+      msg.className='form-msg error';
+      msg.textContent=err.message||'Could not connect. Please try again.';
+      btn.textContent=btnLabel;
+    }finally{btn.classList.remove('btn-loading')}
+  });
+}
+
+setupForm('farmer-form','register-farmer','farmer-btn','farmer-msg','Join as Farmer');
+setupForm('business-form','register-business','business-btn','business-msg','Partner with Us');
+</script>
+</body>
+</html>
